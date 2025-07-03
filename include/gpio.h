@@ -221,4 +221,4 @@ public:
 
   GPIO(const uint32_t GPIO_BASE );
   void setSPIMode();
-}
+};
