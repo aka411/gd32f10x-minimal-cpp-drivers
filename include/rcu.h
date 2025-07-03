@@ -1,8 +1,7 @@
 #pragma once
 #include <cstdint>
 
-const uint32_t RCU_BASE = 0x40021000U;
-RCU_TypeDef* const RCU = (RCU_TypeDef*)(RCU_BASE);
+
 
 
 
@@ -108,3 +107,8 @@ Reset value: 0x0000 0000, reset by backup domain reset.
 This register can be accessed by byte(8-bit), half-word(16-bit) and word(32-bit)
 */
 }  RCU_TypeDef;
+
+
+
+const uint32_t RCU_BASE = 0x40021000U;
+RCU_TypeDef* const RCU = (RCU_TypeDef*)(RCU_BASE);
