@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 3.10) 
+project(gd32f10x_drivers CXX)
+
+
+set(GD32_DRIVERS_SRCS
+    src/spi.cpp
+    src/gpio.cpp
+    src/dma.cpp
+    src/rcu.cpp
+    src/timer.cpp
+    src/fmc.cpp
+
+)
+
+
+
+add_library(${PROJECT_NAME} STATIC ${GD32_DRIVERS_SRCS})
+
+
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+
+
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED TRUE
+    CXX_EXTENSIONS OFF
+)
+
+
+target_compile_options(${PROJECT_NAME} PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
+  $<$<COMPILE_LANGUAGE:LANGUAGE_CXX>:-fno-exceptions>
+
+)

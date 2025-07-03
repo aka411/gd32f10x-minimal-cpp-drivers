@@ -1,13 +1,17 @@
+#pragma once
 
 
-
-
+/*
 
 /*
 Register definition
 TIMER5 base address: 0x4000 1000
 TIMER6 base address: 0x4000 1400
-*/
+
+
+const uint32_t TIMER5_BASE = 0x40001000;
+const uint32_t TIMER6_BASE = 0x40001400;
+
 typedef structs
 {
 
@@ -25,7 +29,7 @@ This register has to be accessed by word (32-bit)
 !!!!!!!!!!!!!!!!
 //Padding required
 !!!!!!!!!!!!!!!!
-*/
+
 Interrupt enable register (TIMERx_DMAINTEN)
 Address offset: 0x0C
 Reset value: 0x0000 0000
@@ -72,3 +76,4 @@ This register has to be accessed by word (32-bit)
 
 
 }Basic_Timer_TypeDef;
+*/

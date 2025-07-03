@@ -1,12 +1,31 @@
+#include "spi.h"
+
+  SPI(const uint32_t SPI_BASE):
+   SPI_P((SPI_TypeDef*)(SPI_BASE))
+{
+
+}
 
 
-/*
-SPI0 base address: 0x4001 3000
-SPI1 / I2S1 base address: 0x4000 3800
-SPI2 / I2S2 base address: 0x4000 3C00
-*/
-const uint32_t SPI0_BASE = 0x0x40013000U;
 
-const uint32_t SPI1_I2S1_BASE = 0x40003800U;
+void SPI::setSPIConfig()
+{
+  SPI_P->CTL0 &=SPI_CTL0_RESET_VALUE ;
+  SPI_P->CTL0 |=SPI_CTL0_PREDEFINED_VAL ;
+  SPI_P->CTL1 |= SPI_CTL1_NSSDRV_SET;
+}
 
-const uint32_t SPI2_I2S2_BASE = 0x40003C00U;
+void SPI::enableSPI()
+{
+  SPI_P->CTL0 |=SPI_CTL0_SPI_EN ;
+}
+
+void SPI::transfer16bit(const uint16_t data)
+{
+
+while ((SPI_P->STAT & (0x01<<7U))) {
+      // Optional: Add a timeout or error handling if it gets stuck
+  }
+
+SPI_P->DATA = data;
+}

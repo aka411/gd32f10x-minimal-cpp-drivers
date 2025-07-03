@@ -1,7 +1,67 @@
+#pragma once
+#include <cstdint>
+
+const uint32_t RCU_BASE = 0x40021000U;
+RCU_TypeDef* const RCU = (RCU_TypeDef*)(RCU_BASE);
 
 
-extern const uint32_t RCU_BASE;
-extern RCU_TypeDef* const RCU;
+
+
+
+/*
+1 DMA1EN DMA1 clock enable
+This bit is set and reset by software.
+0: Disabled DMA1 clock
+1: Enabled DMA1 clock
+
+
+
+0 DMA0EN DMA0 clock enable
+This bit is set and reset by software.
+0: Disabled DMA0 clock
+1: Enabled DMA0 clock
+*/
+
+const uint32_t RCU_DMA0_EN = (0x01U<<0U);
+const uint32_t RCU_DMA1_EN = (0x01U<<1U);
+/*
+SPI0 clock enable
+This bit is set and reset by software.
+0: Disabled SPI0 clock
+1: Enabled SPI0 clock
+*/
+const uint32_t RCU__APB2_SPI0_EN = (0x01U<<12U);
+const uint32_t RCU_APB1_SPI1_EN = (0x01U<<14U);
+const uint32_t RCU_APB1_SPI2_EN = (0x01U<<15U);
+
+
+
+
+
+
+
+/*
+0 AFEN Alternate function IO clock enable
+This bit is set and reset by software.
+0: Disabled Alternate Function IO clock
+1: Enabled Alternate Function IO clock
+*/
+const uint32_t RCU_APB2_AF_EN = (0x01U<<0U);
+
+
+
+/*
+2 PAEN  GPIO port A clock enable
+This bit is set and reset by software.
+0: Disabled GPIO port A clock
+1: Enabled GPIO port A clock
+*/
+
+
+const uint32_t RCU_APB2EN_GPIOA_EN = (0x01U<<2U);
+const uint32_t RCU_APB2EN_GPIOB_EN = (0x01U<<3U);
+const uint32_t RCU_APB2EN_GPIOC_EN = (0x01U<<4U);
+
 
 typedef struct
 {

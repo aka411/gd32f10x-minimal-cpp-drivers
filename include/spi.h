@@ -1,5 +1,5 @@
-
-
+#pragma once
+#include <cstdint>
 
 /*
 Register definition
@@ -99,6 +99,10 @@ typedef struct
     // Reset value: 0x0000 0000
     volatile uint32_t DATA;
 
+
+
+
+
     // CRC polynomial register (SPI_CRCPOLY)
     // Address offset: 0x10
     // Reset value: 0x0000 0007
@@ -125,3 +129,77 @@ typedef struct
     volatile uint32_t I2SPSC;
 
 } SPI_TypeDef;
+
+
+
+
+
+/*
+SPI0 base address: 0x4001 3000
+SPI1 / I2S1 base address: 0x4000 3800
+SPI2 / I2S2 base address: 0x4000 3C00
+*/
+const uint32_t SPI0_BASE = 0x0x40013000U;
+
+const uint32_t SPI1_I2S1_BASE = 0x40003800U;
+
+const uint32_t SPI2_I2S2_BASE = 0x40003C00U;
+
+
+
+/*
+SPI0_REMAP = 0
+PA4(SPI0_NSS)
+PA5(SPI0_SCK)
+PA6(SPI0_MISO)
+PA7(SPI0_MOSI)
+*/
+
+
+
+
+
+
+
+class SPI
+{
+
+private:
+  /*
+  Register definition
+  SPI0 base address: 0x4001 3000
+  SPI1 / I2S1 base address: 0x4000 3800
+  SPI2 / I2S2 base address: 0x4000 3C00
+*/
+SPI_TypeDef* const SPI_P;
+
+
+private:
+  /*
+  Control register 0 (SPI_CTL0)
+Address offset: 0x00
+Reset value: 0x0000 0000
+*/
+  const uint32_t SPI_CTL0_RESET_VALUE = (0x00U);
+
+  const uint32_t SPI_CTL0_PREDEFINED_VAL = (0x0000C804U);
+  const uint32_t SPI_CTL0_SPI_EN = (0x01U<<6U);
+
+  const uint32_t SPI_CTL1_NSSDRV_SET = (0x01U << 2U);
+
+
+
+public:
+
+  SPI(const uint32_t SPI_BASE);
+
+
+  //void setSPIBase(const uint32_t SPI_BASE);
+  void setSPIConfig();
+  void enableSPI();
+
+  void transfer16bit(const uint16_t data);
+
+
+
+}
