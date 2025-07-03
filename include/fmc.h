@@ -1,8 +1,7 @@
 #pragma once
 #include <cstdint>
 
-const uint32_t FMC_BASE = 0x40022000U;
-FMC_TypeDef* const FMC = (FMC_TypeDef*)(FMC_BASE);
+
 
 
 typedef struct
@@ -107,3 +106,7 @@ volatile uint32_t PID;//  Product ID register (FMC_PID)
 
 
 } FMC_TypeDef;
+
+
+const uint32_t FMC_BASE = 0x40022000U;
+FMC_TypeDef* const FMC = (FMC_TypeDef*)(FMC_BASE);
