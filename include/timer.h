@@ -3,7 +3,7 @@
 
 /*
 
-/*
+
 Register definition
 TIMER5 base address: 0x4000 1000
 TIMER6 base address: 0x4000 1400
