@@ -1,6 +1,6 @@
 #include "spi.h"
 
-  SPI(const uint32_t SPI_BASE):
+  SPI::SPI(const uint32_t SPI_BASE):
    SPI_P((SPI_TypeDef*)(SPI_BASE))
 {
 
