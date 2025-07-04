@@ -180,9 +180,11 @@ private:
 Address offset: 0x00
 Reset value: 0x0000 0000
 */
-  const uint32_t SPI_CTL0_RESET_VALUE = (0x00U);
+  const uint32_t SPI_CTL0_RESET_VALUE = (0x00000000U);
 
-  const uint32_t SPI_CTL0_PREDEFINED_VAL = (0x0000C804U);
+//  const uint32_t SPI_CTL0_PREDEFINED_VAL = (0x0000C804U);
+  const uint32_t SPI_CTL0_PREDEFINED_VAL = (0x0000C83CU);
+
   const uint32_t SPI_CTL0_SPI_EN = (0x01U<<6U);
 
   const uint32_t SPI_CTL1_NSSDRV_SET = (0x01U << 2U);
@@ -197,6 +199,7 @@ public:
   //void setSPIBase(const uint32_t SPI_BASE);
   void setSPIConfig();
   void enableSPI();
+  void disableSPI();
 
   void transfer16bit(const uint16_t data);
 

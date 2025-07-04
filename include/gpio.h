@@ -83,9 +83,9 @@ This register has to be accessed by word(32-bit).
 
 
 const uint32_t GPIOA_BASE = 0x40010800U;
-const uint32_t GPIOB_BASE = 0x40010C00;
-const uint32_t GPIOC_BASE = 0x40011000;
-const uint32_t GPIOD_BASE = 0x40011400;
+const uint32_t GPIOB_BASE = 0x40010C00U;
+const uint32_t GPIOC_BASE = 0x40011000U;
+const uint32_t GPIOD_BASE = 0x40011400U;
 
 
 //GPIO_TypeDef* const GPIOA = (GPIO_TypeDef*)(GPIOA_BASE);
@@ -130,7 +130,7 @@ const uint32_t GPIO_CTL0_PIN_0_CB_MASK = (0x03U << 2U);
 const uint32_t GPIO_CTL0_PIN_0_CB_GPIO_PUSH_PULL = (0x00U << 2U);//00: GPIO output with push-pull
 
 const uint32_t GPIO_CTL0_PIN_0_MD_MASK = (0x03U << 0U);
-const uint32_t GPIO_CTL0_PIN_0_MD_OUTPUT_50HZ = (0x11U << 0U);//11: Output mode(50MHz)
+const uint32_t GPIO_CTL0_PIN_0_MD_OUTPUT_50HZ = (0x03U << 0U);//11: Output mode(50MHz)
 
 
 
@@ -138,57 +138,57 @@ const uint32_t GPIO_CTL0_PIN_1_CB_MASK = (0x03U << 6U);
 const uint32_t GPIO_CTL0_PIN_1_CB_GPIO_PUSH_PULL = (0x00U << 6U);//00: GPIO output with push-pull
 
 const uint32_t GPIO_CTL0_PIN_1_MD_MASK = (0x03U << 4U);
-const uint32_t GPIO_CTL0_PIN_1_MD_OUTPUT_50HZ = (0x11U << 4U);//11: Output mode(50MHz)
+const uint32_t GPIO_CTL0_PIN_1_MD_OUTPUT_50HZ = (0x03U << 4U);//11: Output mode(50MHz)
 
 
 const uint32_t GPIO_CTL0_PIN_2_CB_MASK = (0x03U << 10U);
 const uint32_t GPIO_CTL0_PIN_2_CB_GPIO_PUSH_PULL = (0x00U << 10U);//00: GPIO output with push-pull
 
 const uint32_t GPIO_CTL0_PIN_2_MD_MASK = (0x03U << 8U);
-const uint32_t GPIO_CTL0_PIN_2_MD_OUTPUT_50HZ = (0x11U << 8U);//11: Output mode(50MHz)
+const uint32_t GPIO_CTL0_PIN_2_MD_OUTPUT_50HZ = (0x03U << 8U);//11: Output mode(50MHz)
 
 const uint32_t GPIO_CTL0_PIN_3_CB_MASK = (0x03U << 14U);
 const uint32_t GPIO_CTL0_PIN_3_CB_GPIO_PUSH_PULL = (0x00U << 14U);//00: GPIO output with push-pull
 
 const uint32_t GPIO_CTL0_PIN_3_MD_MASK = (0x03U << 12U);
-const uint32_t GPIO_CTL0_PIN_3_MD_OUTPUT_50HZ = (0x11U << 12U);//11: Output mode(50MHz)
+const uint32_t GPIO_CTL0_PIN_3_MD_OUTPUT_50HZ = (0x03U << 12U);//11: Output mode(50MHz)
 
 
 const uint32_t GPIO_CTL0_PIN_4_CB_MASK = (0x03U << 18U);
 //CTL0[1:0] Pin 4 configuration bits
 const uint32_t GPIO_CTL0_PIN_4_CB_GPIO_PUSH_PULL = (0x00U << 18U);//00: GPIO output with push-pull
-const uint32_t GPIO_CTL0_PIN_4_CB_AFIO_OUTPUT_PUSH_PULL = (0x10U << 18U); //10: AFIO output with push-pull
+const uint32_t GPIO_CTL0_PIN_4_CB_AFIO_OUTPUT_PUSH_PULL = (0x02U << 18U); //10: AFIO output with push-pull
 
 const uint32_t GPIO_CTL0_PIN_4_MD_MASK = (0x03U << 16U);
-const uint32_t GPIO_CTL0_PIN_4_MD_OUTPUT_50HZ = (0x11U << 16U);//11: Output mode(50MHz)
+const uint32_t GPIO_CTL0_PIN_4_MD_OUTPUT_50HZ = (0x03U << 16U);//11: Output mode(50MHz)
 
 
 const uint32_t GPIO_CTL0_PIN_5_CB_MASK = (0x03U << 22U);
 const uint32_t GPIO_CTL0_PIN_5_CB_GPIO_PUSH_PULL = (0x00U << 22U);//00: GPIO output with push-pull
-const uint32_t GPIO_CTL0_PIN_5_CB_AFIO_OUTPUT_PUSH_PULL = (0x10U << 22U); //10: AFIO output with push-pull
+const uint32_t GPIO_CTL0_PIN_5_CB_AFIO_OUTPUT_PUSH_PULL = (0x02U << 22U); //10: AFIO output with push-pull
 
 
 const uint32_t GPIO_CTL0_PIN_5_MD_MASK = (0x03U << 20U);
-const uint32_t GPIO_CTL0_PIN_5_MD_OUTPUT_50HZ = (0x11U << 20U);//11: Output mode(50MHz)
+const uint32_t GPIO_CTL0_PIN_5_MD_OUTPUT_50HZ = (0x03U << 20U);//11: Output mode(50MHz)
 
 
 const uint32_t GPIO_CTL0_PIN_6_CB_MASK = (0x03U << 26U);
 const uint32_t GPIO_CTL0_PIN_6_CB_GPIO_PUSH_PULL = (0x00U << 26U);//00: GPIO output with push-pull
 const uint32_t GPIO_CTL0_PIN_6_CB_INPUT_FLOAT = (0x01U << 26U);//01: Floating input //MISO
-const uint32_t GPIO_CTL0_PIN_6_CB_AFIO_OUTPUT_PUSH_PULL = (0x10U << 26U); //10: AFIO output with push-pull
+const uint32_t GPIO_CTL0_PIN_6_CB_AFIO_OUTPUT_PUSH_PULL = (0x02U << 26U); //10: AFIO output with push-pull
 
 const uint32_t GPIO_CTL0_PIN_6_MD_MASK = (0x03U << 24U);
 const uint32_t GPIO_CTL0_PIN_6_MD_INPUT = (0x00U << 24U);//00: Input mode (reset state)
-const uint32_t GPIO_CTL0_PIN_6_MD_OUTPUT_50HZ = (0x11U << 24U);//11: Output mode(50MHz)
+const uint32_t GPIO_CTL0_PIN_6_MD_OUTPUT_50HZ = (0x03U << 24U);//11: Output mode(50MHz)
 
 
 
 const uint32_t GPIO_CTL0_PIN_7_CB_MASK = (0x03U << 30U);
 const uint32_t GPIO_CTL0_PIN_7_CB_GPIO_PUSH_PULL = (0x00U << 30U);//00: GPIO output with push-pull
-const uint32_t GPIO_CTL0_PIN_7_CB_AFIO_OUTPUT_PUSH_PULL = (0x10U << 30U); //10: AFIO output with push-pull //MOSI
+const uint32_t GPIO_CTL0_PIN_7_CB_AFIO_OUTPUT_PUSH_PULL = (0x02U << 30U); //10: AFIO output with push-pull //MOSI
 
 const uint32_t GPIO_CTL0_PIN_7_MD_MASK = (0x03U << 28U);
-const uint32_t GPIO_CTL0_PIN_7_MD_OUTPUT_50HZ = (0x11U << 28U);//11: Output mode(50MHz)
+const uint32_t GPIO_CTL0_PIN_7_MD_OUTPUT_50HZ = (0x03U << 28U);//11: Output mode(50MHz)
 
 
 
