@@ -7,7 +7,7 @@
 
 }
 
- GPIO::setSPIMode()
+ void GPIO::setSPIMode()
  {
    /*
    SPI0_REMAP = 0
