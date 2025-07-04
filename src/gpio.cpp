@@ -1,7 +1,7 @@
 #include "gpio.h"
 
 
-GPIO(const uint32_t GPIO_BASE ):
+ GPIO::GPIO(const uint32_t GPIO_BASE ):
  GPIO_P((GPIO_TypeDef*)( GPIO_BASE))
 {
 
