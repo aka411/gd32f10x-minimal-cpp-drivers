@@ -220,5 +220,6 @@ GPIO_TypeDef* const GPIO_P;
 public:
 
   GPIO(const uint32_t GPIO_BASE );
+
   void setSPIMode();
 };

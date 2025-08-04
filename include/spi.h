@@ -180,10 +180,25 @@ private:
 Address offset: 0x00
 Reset value: 0x0000 0000
 */
-  const uint32_t SPI_CTL0_RESET_VALUE = (0x00000000U);
+  const uint32_t SPI_CTL0_RESET_VALUE = (0x00U);
 
 //  const uint32_t SPI_CTL0_PREDEFINED_VAL = (0x0000C804U);
-  const uint32_t SPI_CTL0_PREDEFINED_VAL = (0x0000C83CU);
+//  const uint32_t SPI_CTL0_PREDEFINED_VAL = (0x0000C83CU);
+  const uint32_t SPI_CTL0_PREDEFINED_VAL =
+       (0x00U << 12U) |//0: Next transfer is data
+      (0x00U << 11U) | // FF16 - 8-bit data frame
+      (0x00U << 9U)  | // SWNSSEN - NSS hardware mode
+      (0x00U << 8U)  | // SWNSS - NSS low (as master)
+      (0x01U << 14U) | // BDOEN - Bidirectional transmit output enable (for transmit)
+      (0x01U << 15U) |// 15 BDEN unidirectional transmit enable
+      (0x00U<< 13U ) |//Bit 13 (CRCEN - CRC calculation enable
+      (0x00U<< 10U )  | // 10 RO Receive only
+      (0x00U<< 7U )   | //7 LF
+      (0x00U << 6U)  | // SPIEN - SPI enable
+      (0x010U << 3U)  | // PSC[2:0] - PCLK/256 //000: PCLK/2
+      (0x1U << 2U)  | // MSTMOD - Master mode
+      (0x1U << 1U)  | // CKPL - Clock polarity high when idle
+      (0x0U << 0U);   // CKPH - Clock phase 0
 
   const uint32_t SPI_CTL0_SPI_EN = (0x01U<<6U);
 
@@ -201,7 +216,7 @@ public:
   void enableSPI();
   void disableSPI();
 
-  void transfer16bit(const uint16_t data);
+  void transfer8bit(const uint8_t data);
 
 
 
