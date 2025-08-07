@@ -1,82 +1,10 @@
 #pragma once
 #include <cstdint>
 
-/*
-Register definition
-SPI0 base address: 0x4001 3000
-SPI1 / I2S1 base address: 0x4000 3800
-SPI2 / I2S2 base address: 0x4000 3C00
 
 
-18.5.1. Control register 0 (SPI_CTL0)
-Address offset: 0x00
-Reset value: 0x0000 0000
-This register can be accessed by byte (8-bit) or half-word (16-bit) or word (32-bit).
-This register has no meaning in I2S mode.
-*/
-
-/*
-typedef struct
-{
-Control register 0 (SPI_CTL0)
-Address offset: 0x00
-Reset value: 0x0000 0000
-This register can be accessed by byte (8-bit) or half-word (16-bit) or word (32-bit).
-This register has no meaning in I2S mode.
-
-
-Control register 1 (SPI_CTL1)
-Address offset: 0x04
-Reset value: 0x0000 0000
-This register can be accessed by byte (8-bit) or half-word (16-bit) or word (32-bit).
-
-
-Status register (SPI_STAT)
-Address offset: 0x08
-Reset value: 0x0000 0002
-This register can be accessed by byte (8-bit) or half-word (16-bit) or word (32-bit).
-
-
-Data register (SPI_DATA)
-Address offset: 0x0C
-Reset value: 0x0000 0000
-This register can be accessed by byte (8-bit) or half-word (16-bit) or word (32-bit).
-
-
-CRC polynomial register (SPI_CRCPOLY)
-Address offset: 0x10
-Reset value: 0x0000 0007
-This register can be accessed by byte (8-bit) or half-word (16-bit) or word (32-bit).
-
-RX CRC register (SPI_RCRC)
-Address offset: 0x14
-Reset value: 0x0000 0000
-This register can be accessed by byte (8-bit) or half-word (16-bit) or word (32-bit).
-
-TX CRC register (SPI_TCRC)
-Address offset: 0x18
-Reset value: 0x0000 0000
-This register can be accessed by byte (8-bit) or half-word (16-bit) or word (32-bit).
-
-
-
-I2S control register (SPI_I2SCTL)
-Address offset: 0x1C
-Reset value: 0x0000 0000
-This register can be accessed by byte (8-bit) or half-word (16-bit) or word (32-bit).
-
-
-I2S clock prescaler register (SPI_I2SPSC)
-Address offset: 0x20
-Reset value: 0x0000 0002
-This register can be accessed by byte (8-bit) or half-word (16-bit) or word (32-bit).
-
-} SPI_TypeDef;
-*/
-
-// Define a struct to represent the SPI peripheral registers
 // This structure maps directly to the memory-mapped registers of an SPI instance.
-typedef struct
+struct
 {
     // Control register 0 (SPI_CTL0)
     // Address offset: 0x00
@@ -135,6 +63,7 @@ typedef struct
 
 
 /*
+Register definition
 SPI0 base address: 0x4001 3000
 SPI1 / I2S1 base address: 0x4000 3800
 SPI2 / I2S2 base address: 0x4000 3C00
@@ -147,14 +76,6 @@ const uint32_t SPI2_I2S2_BASE = 0x40003C00U;
 
 
 
-/*
-SPI0_REMAP = 0
-PA4(SPI0_NSS)
-PA5(SPI0_SCK)
-PA6(SPI0_MISO)
-PA7(SPI0_MOSI)
-*/
-
 
 
 
@@ -165,45 +86,8 @@ class SPI
 {
 
 private:
-  /*
-  Register definition
-  SPI0 base address: 0x4001 3000
-  SPI1 / I2S1 base address: 0x4000 3800
-  SPI2 / I2S2 base address: 0x4000 3C00
-*/
+
 SPI_TypeDef* const SPI_P;
-
-
-private:
-  /*
-  Control register 0 (SPI_CTL0)
-Address offset: 0x00
-Reset value: 0x0000 0000
-*/
-  const uint32_t SPI_CTL0_RESET_VALUE = (0x00U);
-
-//  const uint32_t SPI_CTL0_PREDEFINED_VAL = (0x0000C804U);
-//  const uint32_t SPI_CTL0_PREDEFINED_VAL = (0x0000C83CU);
-  const uint32_t SPI_CTL0_PREDEFINED_VAL =
-       (0x00U << 12U) |//0: Next transfer is data
-      (0x00U << 11U) | // FF16 - 8-bit data frame
-      (0x00U << 9U)  | // SWNSSEN - NSS hardware mode
-      (0x00U << 8U)  | // SWNSS - NSS low (as master)
-      (0x01U << 14U) | // BDOEN - Bidirectional transmit output enable (for transmit)
-      (0x01U << 15U) |// 15 BDEN unidirectional transmit enable
-      (0x00U<< 13U ) |//Bit 13 (CRCEN - CRC calculation enable
-      (0x00U<< 10U )  | // 10 RO Receive only
-      (0x00U<< 7U )   | //7 LF
-      (0x00U << 6U)  | // SPIEN - SPI enable
-      (0x010U << 3U)  | // PSC[2:0] - PCLK/256 //000: PCLK/2
-      (0x1U << 2U)  | // MSTMOD - Master mode
-      (0x1U << 1U)  | // CKPL - Clock polarity high when idle
-      (0x0U << 0U);   // CKPH - Clock phase 0
-
-  const uint32_t SPI_CTL0_SPI_EN = (0x01U<<6U);
-
-  const uint32_t SPI_CTL1_NSSDRV_SET = (0x01U << 2U);
-
 
 
 public:
@@ -211,13 +95,8 @@ public:
   SPI(const uint32_t SPI_BASE);
 
 
-  //void setSPIBase(const uint32_t SPI_BASE);
-  void setSPIConfig();
-  void enableSPI();
-  void disableSPI();
-
   void transfer8bit(const uint8_t data);
-
+  void trasfer16bit(const uint16_t data);
 
 
 };
